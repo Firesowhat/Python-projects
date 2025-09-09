@@ -57,7 +57,48 @@ print(account.get_balance())  # Output: 1300
 # print(account.__balance)  # Uncommenting this line will cause an error
 # print(account.__balance)  # Uncommenting this line will cause an error
 # Instead, use the provided method to access the balance
-print(account.get_balance())  # Output: 1300
+
+#Abstraction
+from abc import ABC, abstractmethod
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+    def perimeter(self):
+        return 2 * 3.14 * self.radius
+    
+# Creating instances of Rectangle and Circle
+rectangle = Rectangle(4, 5)
+circle = Circle(3)
+print(f"Rectangle area: {rectangle.area()}")          # Output: Rectangle area: 20
+print(f"Rectangle perimeter: {rectangle.perimeter()}")# Output: Rectangle perimeter:
+print(f"Circle area: {circle.area()}")                # Output: Circle area: 28.26
+print(f"Circle perimeter: {circle.perimeter()}")      # Output: Circle perimeter:
+# Note: You cannot create an instance of Shape directly since it's an abstract class
+
+
+
 
 
 
